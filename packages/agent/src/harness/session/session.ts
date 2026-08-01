@@ -289,6 +289,7 @@ class StoreSession<TMetadata extends SessionMetadata = SessionMetadata> implemen
 	async getBranch(fromId?: string | null): Promise<SessionTreeEntry[]> {
 		return [...(await this.reader.readPathToRootOrCompaction(fromId === undefined ? this.leafId : fromId))];
 	}
+	// Harness v2 proposes replacing this and getBranch() with findEntriesOnBranch() and an explicit stop condition.
 	async getFullBranch(fromId?: string | null): Promise<SessionTreeEntry[]> {
 		const leafId = fromId === undefined ? this.leafId : fromId;
 		if (leafId === null) return [];
