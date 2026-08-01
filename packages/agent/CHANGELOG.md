@@ -11,6 +11,8 @@
 
 - Added complete active-branch reads to the `Session` facade ([#7396](https://github.com/earendil-works/pi/pull/7396)).
 
+- Added explicit inherited environment-variable removal to harness shell execution patches.
+
 ## [0.83.0] - 2026-07-29
 
 ## [0.82.1] - 2026-07-25
