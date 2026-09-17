@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { stream as streamOpenAICompletions } from "../src/api/openai-completions.ts";
 import { getModel } from "../src/compat.ts";
 import type { Model } from "../src/types.ts";
+import { normalizeContext } from "../src/utils/transcript.ts";
 
 interface FakeUsage {
 	prompt_tokens?: number;
@@ -63,10 +64,10 @@ describe("openai-completions usage parsing", () => {
 		mockState.usage = usage;
 		const message = await streamOpenAICompletions(
 			createModel(),
-			{
+			normalizeContext({
 				systemPrompt: "sys",
 				messages: [{ role: "user", content: "hi", timestamp: Date.now() }],
-			},
+			}),
 			{ apiKey: "test-key" },
 		).result();
 		return message.usage;
