@@ -2,7 +2,13 @@
 // Do not edit manually - run 'npm run generate-models' to update
 
 import values from "./data/llmgateway-devpass.json" with { type: "json" };
-import { flattenModelCatalog, type ModelCatalog } from "../model-catalog.ts";
+import { flattenChatModelCatalog, flattenClassifierModelCatalog, flattenImageModelCatalog, type ChatModelCatalog, type ClassifierModelCatalog, type ImageModelCatalog } from "../model-catalog.ts";
 
-export const LLMGATEWAY_DEVPASS_MODELS: ModelCatalog<typeof values, "llmgateway-devpass"> =
-	flattenModelCatalog("llmgateway-devpass", values);
+export const LLMGATEWAY_DEVPASS_MODELS: ChatModelCatalog<typeof values, "llmgateway-devpass"> =
+	flattenChatModelCatalog("llmgateway-devpass", values);
+
+export const LLMGATEWAY_DEVPASS_IMAGE_MODELS: ImageModelCatalog<typeof values, "llmgateway-devpass"> =
+	flattenImageModelCatalog("llmgateway-devpass", values);
+
+export const LLMGATEWAY_DEVPASS_CLASSIFIER_MODELS: ClassifierModelCatalog<typeof values, "llmgateway-devpass"> =
+	flattenClassifierModelCatalog("llmgateway-devpass", values);

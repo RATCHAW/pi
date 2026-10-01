@@ -22,9 +22,9 @@
  */
 
 import { createServer, type Server, type ServerResponse } from "node:http";
+import { oauthErrorHtml, oauthSuccessHtml } from "../../utils/oauth-page.ts";
 import { getProviderEnvValue } from "../../utils/provider-env.ts";
 import type { AuthInteraction, OAuthAuth, OAuthCredential } from "../types.ts";
-import { oauthErrorHtml, oauthSuccessHtml } from "./oauth-page.ts";
 
 const AUTHORIZE_URL = "https://llmgateway.io/connect/cli";
 const LOGIN_TIMEOUT_MS = 5 * 60 * 1000;

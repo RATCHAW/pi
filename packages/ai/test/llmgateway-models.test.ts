@@ -18,9 +18,11 @@ describe("LLM Gateway models", () => {
 				supportsStore: false,
 				supportsDeveloperRole: false,
 				maxTokensField: "max_tokens",
-				supportsStrictMode: false,
 			},
 		});
+		// Strict tool schemas stay off: the gateway does not guarantee them for every
+		// upstream, and the runtime default is non-strict.
+		expect(model.compat?.supportsStrictMode).not.toBe(true);
 	});
 
 	it("attributes every catalog entry to pi so the gateway can bill per agent", () => {
